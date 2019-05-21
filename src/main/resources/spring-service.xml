@@ -17,19 +17,5 @@
          http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 
-  <!--配置spring的事物管理器-->
-  <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-    <property name="dataSource" ref="dataSource" />
-  </bean>
 
-  <!--配置事物  这里的意思是只要是get find开头的方法都支持事物 是这个意思-->
-  <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
-    <tx:attributes>
-      <tx:method name="get*" propagation="SUPPORTS"/>
-      <tx:method name="find*" propagation="SUPPORTS"/>
-      <tx:method name="select*" propagation="SUPPORTS"/>
-      <tx:method name="load*" propagation="SUPPORTS"/>
-      <tx:method name="search*" propagation="SUPPORTS"/>
-    </tx:attributes>
-  </tx:advice>
 </beans>

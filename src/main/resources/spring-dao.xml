@@ -39,4 +39,39 @@
       <property name="basePackage" value="com.test.mapper"/>
     </bean>
 
+  <!--配置spring的事物管理器-->
+  <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource" />
+  </bean>
+
+  <!--配置事物  这里的意思是只要是get find开头的方法都支持事物 是这个意思-->
+  <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+    <tx:attributes>
+      <tx:method name="get*" propagation="SUPPORTS"/>
+      <tx:method name="find*" propagation="SUPPORTS"/>
+      <tx:method name="select*" propagation="SUPPORTS"/>
+      <tx:method name="load*" propagation="SUPPORTS"/>
+      <tx:method name="search*" propagation="SUPPORTS"/>
+    </tx:attributes>
+  </tx:advice>
+
+  <!--创建mapper的bean-->
+  <!--创建service的bean-->
+  <bean id="userService" class="com.test.service.impl.UserServiceImpl">
+    <!--这里需要注入userDao,但是都没有userDao的id 怎么注入呢  为什么这里的ref 直接userMapper没有报错呢
+        而且如果给userMapper创建一个bean class使用UserMapper接口的路径,会报错说不能用接口
+        但是这里引用的userMapper就不是接口了吗
+        是不是spring的动态给此接口生成了一个类啊-->
+   <!-- <property name="userMapper" ref="userMapper"/>-->
+  </bean>
+
+  <!--这里的id是不是一定就是路由,不过如果这里不是路由好像是没有太大意义的
+      但是这里是不是相当于就是@RequestMapping中的路由是一个意思呢
+      那如果是这样的话 处理器映射器那里的路由又代表什么呢 啊啊啊
+      而且,如果这样把spring的配置文件分成3个 如果三层的每个bean都放在不同的配置文件中
+      那怎么引用的呢 ref直接写不会报错的的吗(这个是需要用import引入的把)
+  -->
+  <bean id="/user" class="com.test.web.UserController">
+    <!--<property name="userService" ref="userService"/>-->
+  </bean>
 </beans>
