@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.example</groupId>
+  <artifactId>xmlDemo</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <dependencies>
+    <!--首先导入spring的核心依赖:
+          包括: -core  -beans -context
+    -->
+      <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+      <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>5.1.7.RELEASE</version>
+      </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-core -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>5.1.7.RELEASE</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>5.1.7.RELEASE</version>
+    </dependency>
+
+    <!--spring整合数据库的依赖-->
+    <!--spring整合web-->
+    <!--为什么spring整合web需要两个依赖,
+      注:springmvc和webmvc是同一个东西
+      "The formal name "Spring Web MVC" comes from the name of its source module spring-webmvc but it is more commonly known as "Spring MVC"."
+    webmvc和mvc有什么区别呢 -->
+    <!--*****************************************************************************************************-->
+    <!--web和webmvc有什么区别??
+     spring-web的等级大于Spring-webmvc。
+      但是在maven中配置了Spring-webmvc的依赖后，是包含Spring-web的依赖的。
+      所以只需要导入webmvc依赖就可以了
+      其实是不需要导入web依赖的  不知道  试一试
+    -->
+
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>5.1.7.RELEASE</version>
+    </dependency>
+    <!--注释掉web试试-->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
+    <!--<dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>5.1.7.RELEASE</version>
+    </dependency>-->
+
+    <!--spring整合事物-->
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+      <version>5.1.7.RELEASE</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>5.1.7.RELEASE</version>
+    </dependency>
+
+
+    <!--spring整合mybatis-->
+    <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>3.5.1</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-spring</artifactId>
+      <version>2.0.1</version>
+    </dependency>
+
+    <!--导入mybatis-plus依赖-->
+    <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus -->
+    <dependency>
+      <groupId>com.baomidou</groupId>
+      <artifactId>mybatis-plus</artifactId>
+      <version>3.1.1</version>
+    </dependency>
+
+    <!--mysql驱动
+      担心mysql驱动不适配的问题,所以使用5版本
+    -->
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.47</version>
+    </dependency>
+
+    <!--c3p0连接池-->
+    <!-- https://mvnrepository.com/artifact/com.mchange/c3p0 -->
+    <dependency>
+      <groupId>com.mchange</groupId>
+      <artifactId>c3p0</artifactId>
+      <version>0.9.5.4</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-aop</artifactId>
+      <version>5.1.7.RELEASE</version>
+    </dependency>
+
+  </dependencies>
+
+</project>
