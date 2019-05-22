@@ -16,11 +16,14 @@
          http://www.springframework.org/schema/mvc
          http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+  <import resource="spring-service.xml"/>
+
   <!--扫描controller层下的包-->
   <context:component-scan base-package="com.test.web"/>
 
   <!--视图解析器-->
-  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> <property name="prefix" value=""/>
+  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="prefix" value=""/>
     <property name="suffix" value=""/>
   </bean>
 
@@ -28,17 +31,24 @@
   <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
     <property name="mappings">
       <props>
-          <!--读取映射器文件-->
-          <!-- 对itemsController1进行url映射，url是/queryItems1.action,1个bean可以配多个url -->
-          <!-- <prop key="/queryItems1.action">itemsController1</prop>
-          <prop key="/queryItems2.action">itemsController1</prop>-->
+           <!--这里是一个controller类的路由,相当于是作用于类上面的@RequestMapping-->
+           <prop key="/queryItems1">userController</prop>
       </props>
     </property>
+  </bean>
+
+  <bean id="userController" class="com.test.web.UserController">
+    <property name="userService" ref="userService"/>
+    <!--name写每一个接口的路由 ref写接口对应的方法名称吗-->
+   <!-- <property name="/test" ref="getUser"/>-->
   </bean>
 
   <!--非注解的处理器适配器-->
   <bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"/>
 
+ <!-- <bean id="builder" class="org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder">
+    <constructor-arg ref="uriComponentsBuilder"/>
+  </bean>
 
-
+  <bean id="uriComponentsBuilder" class="org.springframework.web.util.UriComponentsBuilder"></bean>-->
 </beans>

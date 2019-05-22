@@ -16,6 +16,10 @@
          http://www.springframework.org/schema/mvc
          http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+  <import resource="spring-dao.xml"/>
+  <bean id="userService" class="com.test.service.impl.UserServiceImpl">
+    <property name="userMapper" ref="userMapper"/>
+  </bean>
 
 
 </beans>
